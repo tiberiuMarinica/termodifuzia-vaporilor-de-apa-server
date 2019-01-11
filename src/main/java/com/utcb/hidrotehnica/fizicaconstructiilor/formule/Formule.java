@@ -186,7 +186,7 @@ public class Formule {
 	    return gfDTO;
 	}
 	
-	private XYSeries getXYSeries1(Formule f, List<Strat> straturi) {
+	public XYSeries getXYSeries1(Formule f, List<Strat> straturi) {
 		final XYSeries xySeries = new XYSeries("P(x)");
 		
 		Double sumaGrosimi = 0.0;
@@ -218,7 +218,7 @@ public class Formule {
 		return xySeries;
 	}
 	
-	private XYSeries getXYSeries2(Formule f, List<Strat> straturi) {
+	public XYSeries getXYSeries2(Formule f, List<Strat> straturi) {
 		final XYSeries xySeries = new XYSeries("Ps(x)");
 		
 		Double sumaGrosimi = 0.0;
@@ -249,7 +249,7 @@ public class Formule {
 	
 	
 
-	private void adaugaMarkeriVerticali(XYDataset dataset, JFreeChart xylineChart) {
+	public void adaugaMarkeriVerticali(XYDataset dataset, JFreeChart xylineChart) {
 		XYSeriesCollection dataset0 = (XYSeriesCollection) dataset;
 	    XYSeries series0 = dataset0.getSeries(0);
 	    //for(int k = 0; k < series0.getItems().size() - 1; k++){
@@ -259,7 +259,7 @@ public class Formule {
 	    }
 	}
 
-	private void adaugaMarkeriVerticali(Double x, JFreeChart xylineChart) {
+	public void adaugaMarkeriVerticali(Double x, JFreeChart xylineChart) {
 		ValueMarker marker = new ValueMarker(x);
 		marker.setPaint(Color.GREEN);
 		
