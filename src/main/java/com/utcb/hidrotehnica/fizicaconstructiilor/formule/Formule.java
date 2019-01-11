@@ -192,20 +192,20 @@ public class Formule {
 		Double sumaGrosimi = 0.0;
 		xySeries.add(sumaGrosimi, f.Pi);
 		
-		Strat primulStrat = straturi.get(0);
+		/*Strat primulStrat = straturi.get(0);
 		
 		sumaGrosimi = sumaGrosimi + primulStrat.getD();
-		xySeries.add(sumaGrosimi, f.Pi);
+		xySeries.add(sumaGrosimi, f.Pi);*/
 		
 		
-		for(int i = 1; i < straturi.size(); i++) {
+		for(int i = 0; i < straturi.size() - 1; i++) {
 
 			Strat s = straturi.get(i);
 			
-			Strat penultim = straturi.get(i-1);
+			//Strat penultim = straturi.get(i-1);
 
 			sumaGrosimi = sumaGrosimi + s.getD();
-			xySeries.add(sumaGrosimi, penultim.P);
+			xySeries.add(sumaGrosimi, s.P);
 		}
 		
 		sumaGrosimi = sumaGrosimi + straturi.get(straturi.size() - 1).getD();
@@ -224,18 +224,18 @@ public class Formule {
 		Double sumaGrosimi = 0.0;
 		xySeries.add(sumaGrosimi, f.PsThetaSi);
 		
-		Strat primulStrat = straturi.get(0);
+		/*Strat primulStrat = straturi.get(0);
 		
 		sumaGrosimi = sumaGrosimi + primulStrat.getD();
-		xySeries.add(sumaGrosimi, f.PsThetaSi);
+		xySeries.add(sumaGrosimi, f.PsThetaSi);*/
 		
-		for(int i = 1; i < straturi.size(); i++) {
+		for(int i = 0; i < straturi.size() - 1; i++) {
 			
 			Strat s = straturi.get(i);
-			Strat penultim = straturi.get(i-1);
+			//Strat penultim = straturi.get(i-1);
 
 			sumaGrosimi = sumaGrosimi + s.getD();
-			xySeries.add(sumaGrosimi, penultim.PsTheta);
+			xySeries.add(sumaGrosimi, s.PsTheta);
 		}
 		
 		sumaGrosimi = sumaGrosimi + straturi.get(straturi.size() - 1).getD();
