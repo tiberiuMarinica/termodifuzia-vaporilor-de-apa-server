@@ -39,14 +39,10 @@ public class Formule {
 	public Double PsThetaSi;
 	public Double PsThetaSe;
 	
-	private Double PsThetaInt;
-	
 	public Formule(Double ti, Double te, Double phiInt, Double phiExt, List<Strat> straturi) {
 		
 		Pi = Ps(ti) * phiInt;
 		Pe = Ps(te) * phiExt;
-		
-		PsThetaInt = Ps(ti);
 		
 		Rv = calculeazaRv(straturi);
 		Rt = calculeazaRt(straturi);
@@ -215,7 +211,7 @@ public class Formule {
 		final XYSeries xySeries = new XYSeries("Ps(x)");
 		
 		Double sumaGrosimi = 0.0;
-		xySeries.add(sumaGrosimi, f.PsThetaInt);
+		xySeries.add(sumaGrosimi, f.PsThetaSi);
 		
 		for(int i = 0; i < straturi.size() - 1; i++) {
 			
