@@ -186,26 +186,26 @@ public class Formule {
 	    return gfDTO;
 	}
 	
-	private XYSeries getXYSeries1(Formule f, List<Strat> straturi) {
+	public XYSeries getXYSeries1(Formule f, List<Strat> straturi) {
 		final XYSeries xySeries = new XYSeries("P(x)");
 		
 		Double sumaGrosimi = 0.0;
 		xySeries.add(sumaGrosimi, f.Pi);
 		
-		Strat primulStrat = straturi.get(0);
+		/*Strat primulStrat = straturi.get(0);
 		
 		sumaGrosimi = sumaGrosimi + primulStrat.getD();
-		xySeries.add(sumaGrosimi, f.Pi);
+		xySeries.add(sumaGrosimi, f.Pi);*/
 		
 		
-		for(int i = 1; i < straturi.size(); i++) {
+		for(int i = 0; i < straturi.size() - 1; i++) {
 
 			Strat s = straturi.get(i);
 			
-			Strat penultim = straturi.get(i-1);
+			//Strat penultim = straturi.get(i-1);
 
 			sumaGrosimi = sumaGrosimi + s.getD();
-			xySeries.add(sumaGrosimi, penultim.P);
+			xySeries.add(sumaGrosimi, s.P);
 		}
 		
 		sumaGrosimi = sumaGrosimi + straturi.get(straturi.size() - 1).getD();
@@ -218,24 +218,24 @@ public class Formule {
 		return xySeries;
 	}
 	
-	private XYSeries getXYSeries2(Formule f, List<Strat> straturi) {
+	public XYSeries getXYSeries2(Formule f, List<Strat> straturi) {
 		final XYSeries xySeries = new XYSeries("Ps(x)");
 		
 		Double sumaGrosimi = 0.0;
 		xySeries.add(sumaGrosimi, f.PsThetaSi);
 		
-		Strat primulStrat = straturi.get(0);
+		/*Strat primulStrat = straturi.get(0);
 		
 		sumaGrosimi = sumaGrosimi + primulStrat.getD();
-		xySeries.add(sumaGrosimi, f.PsThetaSi);
+		xySeries.add(sumaGrosimi, f.PsThetaSi);*/
 		
-		for(int i = 1; i < straturi.size(); i++) {
+		for(int i = 0; i < straturi.size() - 1; i++) {
 			
 			Strat s = straturi.get(i);
-			Strat penultim = straturi.get(i-1);
+			//Strat penultim = straturi.get(i-1);
 
 			sumaGrosimi = sumaGrosimi + s.getD();
-			xySeries.add(sumaGrosimi, penultim.PsTheta);
+			xySeries.add(sumaGrosimi, s.PsTheta);
 		}
 		
 		sumaGrosimi = sumaGrosimi + straturi.get(straturi.size() - 1).getD();
@@ -249,7 +249,7 @@ public class Formule {
 	
 	
 
-	private void adaugaMarkeriVerticali(XYDataset dataset, JFreeChart xylineChart) {
+	public void adaugaMarkeriVerticali(XYDataset dataset, JFreeChart xylineChart) {
 		XYSeriesCollection dataset0 = (XYSeriesCollection) dataset;
 	    XYSeries series0 = dataset0.getSeries(0);
 	    //for(int k = 0; k < series0.getItems().size() - 1; k++){
@@ -259,7 +259,7 @@ public class Formule {
 	    }
 	}
 
-	private void adaugaMarkeriVerticali(Double x, JFreeChart xylineChart) {
+	public void adaugaMarkeriVerticali(Double x, JFreeChart xylineChart) {
 		ValueMarker marker = new ValueMarker(x);
 		marker.setPaint(Color.GREEN);
 		
