@@ -39,10 +39,14 @@ public class Formule {
 	public Double PsThetaSi;
 	public Double PsThetaSe;
 	
+	private Double PsThetaInt;
+	
 	public Formule(Double ti, Double te, Double phiInt, Double phiExt, List<Strat> straturi) {
 		
 		Pi = Ps(ti) * phiInt;
 		Pe = Ps(te) * phiExt;
+		
+		PsThetaInt = Ps(ti);
 		
 		Rv = calculeazaRv(straturi);
 		Rt = calculeazaRt(straturi);
@@ -192,17 +196,9 @@ public class Formule {
 		Double sumaGrosimi = 0.0;
 		xySeries.add(sumaGrosimi, f.Pi);
 		
-		/*Strat primulStrat = straturi.get(0);
-		
-		sumaGrosimi = sumaGrosimi + primulStrat.getD();
-		xySeries.add(sumaGrosimi, f.Pi);*/
-		
-		
 		for(int i = 0; i < straturi.size() - 1; i++) {
 
 			Strat s = straturi.get(i);
-			
-			//Strat penultim = straturi.get(i-1);
 
 			sumaGrosimi = sumaGrosimi + s.getD();
 			xySeries.add(sumaGrosimi, s.P);
@@ -212,9 +208,6 @@ public class Formule {
 		
 		xySeries.add(sumaGrosimi, f.Pe);
 		
-		//xySeries.add(sumaGrosimi + 0.05, f.Pe);
-		
-		
 		return xySeries;
 	}
 	
@@ -222,17 +215,11 @@ public class Formule {
 		final XYSeries xySeries = new XYSeries("Ps(x)");
 		
 		Double sumaGrosimi = 0.0;
-		xySeries.add(sumaGrosimi, f.PsThetaSi);
-		
-		/*Strat primulStrat = straturi.get(0);
-		
-		sumaGrosimi = sumaGrosimi + primulStrat.getD();
-		xySeries.add(sumaGrosimi, f.PsThetaSi);*/
+		xySeries.add(sumaGrosimi, f.PsThetaInt);
 		
 		for(int i = 0; i < straturi.size() - 1; i++) {
 			
 			Strat s = straturi.get(i);
-			//Strat penultim = straturi.get(i-1);
 
 			sumaGrosimi = sumaGrosimi + s.getD();
 			xySeries.add(sumaGrosimi, s.PsTheta);
@@ -242,8 +229,6 @@ public class Formule {
 		
 		xySeries.add(sumaGrosimi, f.PsThetaSe);
 		
-		//xySeries.add(sumaGrosimi + 0.05, f.PsThetaSe);
-		
 		return xySeries;
 	}
 	
@@ -252,7 +237,6 @@ public class Formule {
 	public void adaugaMarkeriVerticali(XYDataset dataset, JFreeChart xylineChart) {
 		XYSeriesCollection dataset0 = (XYSeriesCollection) dataset;
 	    XYSeries series0 = dataset0.getSeries(0);
-	    //for(int k = 0; k < series0.getItems().size() - 1; k++){
 	    for(Object i : series0.getItems()) {
 	    	XYDataItem item = (XYDataItem) i;
 	    	adaugaMarkeriVerticali(item.getXValue(), xylineChart);

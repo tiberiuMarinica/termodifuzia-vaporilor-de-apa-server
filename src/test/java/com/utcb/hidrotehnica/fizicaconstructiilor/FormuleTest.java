@@ -90,7 +90,7 @@ public class FormuleTest {
 	    
 		int width = 640; /* Width of the image */
 		int height = 480; /* Height of the image */
-		File file = new File("D:\\termodifuzia_vaporilor\\XYLineChart.jpeg");
+		File file = new File("D:\\UTCB\\AN 3\\fizica_constructiilor\\XYLineChart.jpeg");
 		ChartUtilities.saveChartAsJPEG(file, xylineChart, width, height);
 	}
 
